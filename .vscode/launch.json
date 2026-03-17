@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++: Auto-Pause External Console",
+            "type": "cppdbg",
+            "request": "launch",
+            // Gọi trình thông dịch lệnh của Windows thay vì gọi trực tiếp .exe
+            "program": "C:\\Windows\\System32\\cmd.exe",
+            "args": [
+                "/C", // Tham số để cmd chạy lệnh xong rồi thoát
+                "${fileDirname}\\${fileBasenameNoExtension}.exe", // Chạy file code của bạn
+                "&", // Dấu nối lệnh trong Windows
+                "pause" // Lệnh dừng màn hình của hệ thống
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true, // Bật cửa sổ đen riêng biệt
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "preLaunchTask": "C/C++: g++.exe build active file"
+        }
+    ]
+}
