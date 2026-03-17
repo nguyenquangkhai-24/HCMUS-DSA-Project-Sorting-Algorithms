@@ -17,10 +17,12 @@ void selectionSort(vector<int> &a, unsigned long long &cmp)
                 min = j;
             }
         }
-        if (min!=i)
-        {int t = a[min];
-        a[min] = a[i];
-        a[i] = t;}
+        if (min != i)
+        {
+            int t = a[min];
+            a[min] = a[i];
+            a[i] = t;
+        }
     }
 }
 
@@ -29,7 +31,7 @@ void bubbleSort(vector<int> &a, unsigned long long &cmp)
     int n = a.size();
     for (int i = 0; (++cmp) && i < n - 1; i++)
     {
-        bool flag=false;
+        bool flag = false;
         for (int j = n - 1; (++cmp) && j > i; j--)
         {
             if ((++cmp) && a[j] < a[j - 1])
@@ -37,10 +39,11 @@ void bubbleSort(vector<int> &a, unsigned long long &cmp)
                 int t = a[j - 1];
                 a[j - 1] = a[j];
                 a[j] = t;
-                flag=true;
+                flag = true;
             }
         }
-        if (flag==false) break;
+        if (flag == false)
+            break;
     }
 }
 void shellSort(vector<int> &a, unsigned long long &cmp)
@@ -184,7 +187,7 @@ void merge(vector<int> &a, int left, int right, int mid, unsigned long long &cmp
     int j = 0;
     while ((++cmp) && i < tmp1.size() && j < tmp2.size())
     {
-        if ((++cmp) &&tmp1[i] <= tmp2[j])
+        if ((++cmp) && tmp1[i] <= tmp2[j])
         {
             a[left++] = tmp1[i];
             i++;
@@ -266,7 +269,7 @@ void countingSort(vector<int> &a, unsigned long long &cmp)
     int maxEle = INT_MIN;
     for (int i = 0; (++cmp) && i < a.size(); i++)
     {
-        if (a[i] > maxEle)
+        if ((++cmp) && a[i] > maxEle)
             maxEle = a[i];
     }
     vector<int> countAr(maxEle + 1);
@@ -367,7 +370,7 @@ void heapSort(vector<int> &a, unsigned long long &cmp)
     for (int i = size / 2 - 1; (++cmp) && (i >= 0); i--)
         heapify(a, size, i, cmp);
 
-    for (int i = size - 1; i > 0; i--)
+    for (int i = size - 1; (++cmp) && i > 0; i--)
     {
         swap(a[0], a[i]);
         heapify(a, i, 0, cmp);
