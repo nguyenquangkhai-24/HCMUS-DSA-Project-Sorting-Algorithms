@@ -113,7 +113,7 @@ void flashSort(vector<int> &a, unsigned long long &cmp)
         L[k]++;
     }
 
-    for (int i = 1; i < m; i++)
+    for (int i = 1; (++cmp) && i < m; i++)
     {
         L[i] += L[i - 1];
     }
@@ -165,6 +165,7 @@ void radixSort(vector<int> &a, unsigned long long &cmp)
         return;
 
     int maxVal = *max_element(a.begin(), a.end());
+    cmp += a.size() - 1;
 
     for (int exp = 1; (++cmp) && maxVal / exp > 0; exp *= 10)
     {
